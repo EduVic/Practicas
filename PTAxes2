@@ -1,0 +1,163 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPC627qAJRZO+GiH3OnG2BG",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/EduVic/Practicas/blob/main/PTAxes2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 211
+        },
+        "id": "_h5jyhcqfvg8",
+        "outputId": "f7edb7d4-f63f-424f-bd11-bffec3a55a83"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "'list' object has no attribute 'shape'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-2-b2efc8d41f09>\u001b[0m in \u001b[0;36m<cell line: 48>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     46\u001b[0m \u001b[0mu\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mzeros\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     47\u001b[0m \u001b[0meps\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mzeros\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m3\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 48\u001b[0;31m \u001b[0mP\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mzeros\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfault\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     49\u001b[0m \u001b[0mT\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mzeros\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfault\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     50\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mAttributeError\u001b[0m: 'list' object has no attribute 'shape'"
+          ]
+        }
+      ],
+      "source": [
+        "#This Python code replicates the functionality of the MATLAB code. Ensure you have the necessary libraries installed (numpy and matplotlib) and the fault and slip arrays defined before running the script.\n",
+        "\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "fault=[000,30]\n",
+        "slip=[90,-30]\n",
+        "\n",
+        "def sph_to_cart(strike, dip, r):\n",
+        "    strike = np.deg2rad(strike)\n",
+        "    dip = np.deg2rad(dip)\n",
+        "    x = r * np.cos(dip) * np.sin(strike)\n",
+        "    y = r * np.cos(dip) * np.cos(strike)\n",
+        "    z = r * np.sin(dip)\n",
+        "    return x, y, z\n",
+        "\n",
+        "def cart_to_sph(x, y, z):\n",
+        "    r = np.sqrt(x**2 + y**2 + z**2)\n",
+        "    dip = np.arcsin(z / r)\n",
+        "    strike = np.arctan2(x, y)\n",
+        "    return np.rad2deg(strike), np.rad2deg(dip)\n",
+        "\n",
+        "def great_circle(strike, dip):\n",
+        "    # Compute great circle path for plotting\n",
+        "    path = []\n",
+        "    for i in np.linspace(0, 2 * np.pi, 100):\n",
+        "        x, y, z = sph_to_cart(strike + np.rad2deg(i), dip, 1)\n",
+        "        path.append([x, y])\n",
+        "    return np.array(path)\n",
+        "\n",
+        "def st_coord_line(strike, dip):\n",
+        "    x, y, z = sph_to_cart(strike, dip, 1)\n",
+        "    return x, y\n",
+        "\n",
+        "def stereonet(lower, upper, step, pole):\n",
+        "    fig = plt.figure()\n",
+        "    ax = fig.add_subplot(111, projection='polar')\n",
+        "    ax.set_theta_direction(-1)\n",
+        "    ax.set_theta_offset(np.pi / 2.0)\n",
+        "    for i in np.arange(lower, upper, step):\n",
+        "        ax.plot([0, np.pi * 2], [i, i], 'k:', linewidth=0.5)\n",
+        "    return ax\n",
+        "\n",
+        "# Initialize some vectors\n",
+        "n = np.zeros(3)\n",
+        "u = np.zeros(3)\n",
+        "eps = np.zeros((3, 3))\n",
+        "P = np.zeros((fault.shape[0], 2))\n",
+        "T = np.zeros((fault.shape[0], 2))\n",
+        "\n",
+        "# For all faults\n",
+        "for i in range(fault.shape[0]):\n",
+        "    # Assume that slip vector is pointing down\n",
+        "    up = 'n'\n",
+        "    # If slip vector is pointing up\n",
+        "    if slip[i, 2] < 0.0:\n",
+        "        slip[i, 2] = -slip[i, 2]\n",
+        "        up = 'y'\n",
+        "\n",
+        "    # Direction cosines of pole to fault and slip vector\n",
+        "    n[0], n[1], n[2] = sph_to_cart(fault[i, 0], fault[i, 1], 1)\n",
+        "    u[0], u[1], u[2] = sph_to_cart(slip[i, 0], slip[i, 1], 0)\n",
+        "\n",
+        "    # Compute u(i)*n(j) + u(j)*n(i)\n",
+        "    for j in range(3):\n",
+        "        for k in range(3):\n",
+        "            eps[j, k] = u[j] * n[k] + u[k] * n[j]\n",
+        "\n",
+        "    # Compute orientations of principal axes of strain\n",
+        "    D, V = np.linalg.eig(eps)\n",
+        "\n",
+        "    # If slip vector is pointing down\n",
+        "    if up == 'n':\n",
+        "        # P orientation\n",
+        "        P[i, 0], P[i, 1] = cart_to_sph(V[0, 2], V[1, 2], V[2, 2])\n",
+        "        # T orientation\n",
+        "        T[i, 0], T[i, 1] = cart_to_sph(V[0, 0], V[1, 0], V[2, 0])\n",
+        "    else:\n",
+        "        # P orientation\n",
+        "        P[i, 0], P[i, 1] = cart_to_sph(V[0, 0], V[1, 0], V[2, 0])\n",
+        "        # T orientation\n",
+        "        T[i, 0], T[i, 1] = cart_to_sph(V[0, 2], V[1, 2], V[2, 2])\n",
+        "\n",
+        "# Plot stereonet\n",
+        "ax = stereonet(0, np.pi/2, np.pi/18, 1)\n",
+        "ax.set_aspect('equal')\n",
+        "\n",
+        "# Plot other elements\n",
+        "for i in range(fault.shape[0]):\n",
+        "    # Plot fault\n",
+        "    path = great_circle(fault[i, 0], fault[i, 1])\n",
+        "    ax.plot(path[:, 0], path[:, 1], 'r')\n",
+        "\n",
+        "    # Plot Slip vector (red square)\n",
+        "    xp, yp = st_coord_line(slip[i, 0], slip[i, 1])\n",
+        "    ax.plot(xp, yp, 'rs')\n",
+        "\n",
+        "    # Plot P axis (black, filled circle)\n",
+        "    xp, yp = st_coord_line(P[i, 0], P[i, 1])\n",
+        "    ax.plot(xp, yp, 'ko', markerfacecolor='k')\n",
+        "\n",
+        "    # Plot T axis (black circle)\n",
+        "    xp, yp = st_coord_line(T[i, 0], T[i, 1])\n",
+        "    ax.plot(xp, yp, 'ko')\n",
+        "\n",
+        "plt.show()"
+      ]
+    }
+  ]
+}
